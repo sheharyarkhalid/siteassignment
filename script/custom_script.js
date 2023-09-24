@@ -89,5 +89,5 @@ form.addEventListener("submit", function (event) {
     sessionStorage.setItem("formData", JSON.stringify(formData));
 
     // You can also submit the form here if needed
-    // form.submit();
+ form.submit();
 });
