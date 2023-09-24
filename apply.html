@@ -21,7 +21,7 @@
         <!-- script -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       
-         <script src="js/custom_script.js"></script>
+       
       </head>
 
     <body>
@@ -99,8 +99,9 @@
                                 <a href="tel:+923104701882">+92 310 4701882</a>
                             </span>
                         </p>
+                        <p id="validationMessage"></p>
                     </div>
-                    <form>
+                    <form method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
                         <div class="contact_form_container">
                             <div class="contact_us_form_box">
                                 <div class="contact_us_form_fields">
@@ -113,6 +114,7 @@
                                                 name="first_name"
                                                 pattern="[A-Za-z]{0,20}"
                                                 required
+                                                title="Please enter up to 20 alphabetic characters."
                                                 value /></span>
                                                 <!-- <p id="validationMessage">Please enter up to 20 alphabetic characters.</p> -->
                                     </div>
@@ -138,7 +140,10 @@
                                                name="Job_reference_number"
                                                pattern="[A-Za-z0-9]{5}" 
                                                required
-                                               id="inputField"
+                                               title="Please enter exactly 5 alphanumeric characters."
+                                               id="referenceInput"
+                                               value=""
+                                               readonly
                                                 /></span>
                                              <!-- <p id="validationMessage">Please enter exactly 5 alphanumeric characters.</p> -->
                                     </div>
@@ -149,8 +154,10 @@
                                                 placeholder="Your date of birth"
                                                 name="date_of_birth"
                                                 required
+                                                id="birthdate"
                                                 value /></span>
-                                        
+                                                 <p id="validationdate"> </p>
+                                               
                                     </div> 
                                 </div>
                                 <div class="contact_us_form_fields">
@@ -186,8 +193,9 @@
                                                name="postcode"
                                                required
                                                pattern="\d{4}"
+                                               id="postcode"
                                                 /></span>
-                                                <!-- <p id="validationMessage">Please enter exactly 4 digits.</p> -->
+                                                 <p id="validationpostalcode"></p>
                                     </div>
                                     <div class="contact_us_form_fields_data">
                                         <label>Email address </label>
@@ -203,16 +211,18 @@
                                 <div class="contact_us_form_fields">
                                     <div class="contact_us_form_fields_data">
                                         <label>State</label>
-                                        <span><select name="state" required>
-                                            <option>VIC </option>
-                                            <option>NSW </option>
-                                            <option>QLD </option>
-                                            <option>NT</option>
-                                            <option>WA</option>
-                                            <option>SA</option>
-                                            <option>TAS</option>
-                                            <option>ACT</option>
-                                        </select></span>
+                                        <span>
+                                            <select name="state" id="state" required>
+                                                <option value="VIC">VIC</option>
+                                                <option value="NSW">NSW</option>
+                                                <option value="QLD">QLD</option>
+                                                <option value="NT">NT</option>
+                                                <option value="WA">WA</option>
+                                                <option value="SA">SA</option>
+                                                <option value="TAS">TAS</option>
+                                                <option value="ACT">ACT</option>
+                                            </select>
+                                    </span>
                                         <label for="state" generated="true"
                                             class="error"></label>
                                     </div> 
@@ -242,8 +252,8 @@
                                         <div class="radio_option_main">
                                           <div class="radio_option">
                                             <input type="checkbox" name="skill" required><small>skill 1</small></div>
-                                            <div class="radio_option"> <input type="checkbox" name="skill" required><small>skill 2</small></div>
-                                            <div class="radio_option">  <input type="checkbox" name="skill" required><small>Other</small>
+                                            <div class="radio_option"> <input type="checkbox" name="skill"><small>skill 2</small></div>
+                                            <div class="radio_option">  <input type="checkbox" name="skill" id="otherCheckbox"><small>Other</small>
                                           </div>
                                         </div>
                                     </div>
@@ -254,10 +264,12 @@
                                         cols="20"
                                         rows="5"
                                         placeholder="Other Skills...."
+                                        id="otherTextarea"
                                         name="otherskill"></textarea>
                                 </div>
+                                <p id="validationtextarea"></p>
                                 <div class="contact_us_form_submit_btn">
-                                    <input value="submit" type="submit">
+                                    <input onclick="validateForm()" value="submit" type="submit">
                                 </div>
                             </div>
                         </div>
@@ -358,5 +370,8 @@
         <div class="copy_right_section">
             <span>@ 2023 <b>3X System</b> -All Rights Reserved</span>
         </div>
+    
+        <script src="js/custom_script.js"></script>
+        <script src="js/apply.js"></script>
     </body>
 </html>
